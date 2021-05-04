@@ -1,6 +1,6 @@
 // Copyright 2021 Kochankov Ilya
-#include <algorithm>
 #include <gtest/gtest.h>
+#include <algorithm>
 #include <vector>
 #include "../../../3rdparty/unapproved/unapproved.h"
 #include "./shell_sort_simple_std.h"
