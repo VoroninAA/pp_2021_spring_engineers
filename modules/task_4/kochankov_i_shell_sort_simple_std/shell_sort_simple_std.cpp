@@ -10,7 +10,9 @@ std::vector<double> getRandomVector(int sz) {
     std::random_device dev;
     std::mt19937 gen(dev());
     std::vector<double> vec(sz);
-    for (int i = 0; i < sz; i++) { vec[i] = gen() % 100; }
+    for (int i = 0; i < sz; i++) {
+        vec[i] = gen() % 100;
+    }
     return vec;
 }
 
@@ -69,7 +71,7 @@ std::vector<double> shell_sort_std(const std::vector<double>& vec, int num_threa
             tmp.insert(tmp.end(), copy.begin() + delta * thread_num, copy.end());
         } else {
             tmp.insert(tmp.end(), copy.begin() + delta * thread_num,
-                copy.begin() + delta * (thread_num + 1));
+                       copy.begin() + delta * (thread_num + 1));
         }
         split_vec.push_back(tmp);
         tmp.clear();
@@ -77,9 +79,9 @@ std::vector<double> shell_sort_std(const std::vector<double>& vec, int num_threa
 
     std::vector<std::thread> threads;
     for (size_t i = 0; i < 4; i++) {
-        threads.emplace_back([&split_vec, i](const std::vector<double>& vec){
+        threads.emplace_back([&split_vec, i](const std::vector<double>& vec) {
             split_vec[i] = shell_sort(vec);
-            }, split_vec[i]);
+        }, split_vec[i]);
     }
     for (size_t i = 0; i < 4; i++) {
         threads[i].join();
