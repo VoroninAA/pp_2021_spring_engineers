@@ -1,9 +1,9 @@
 // Copyright 2021 Kochankov Ilya
-#include "../../../modules/task_4/kochankov_i_shell_sort_simple_std/shell_sort_simple_std.h"
-#include "../../../3rdparty/unapproved/unapproved.h"
 #include <algorithm>
 #include <random>
 #include <vector>
+#include "../../../modules/task_4/kochankov_i_shell_sort_simple_std/shell_sort_simple_std.h"
+#include "../../../3rdparty/unapproved/unapproved.h"
 
 std::vector<double> getRandomVector(int sz) {
   std::random_device dev;
