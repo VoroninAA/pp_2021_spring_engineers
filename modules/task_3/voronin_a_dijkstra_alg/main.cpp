@@ -3,7 +3,6 @@
 #include <gtest/gtest.h>
 #include <vector>
 #include "./dijkstra_algorithm.hpp"
-    auto g_ = generateSimpleGraph(4000);
 
 TEST(dijkstra, test_matrix_generation) {
     std::vector<int> g(16);
@@ -86,7 +85,7 @@ TEST(dijkstra, test_time) {
     auto g = generateSimpleGraph(12000);
 
     tbb::tick_count start = tbb::tick_count::now();
-    auto parallel_result = dijkstraParallel(g_, 1, 1000);
+    auto parallel_result = dijkstraParallel(g, 1, 1000);
     tbb::tick_count end = tbb::tick_count::now();
     double time1 = (end - start).seconds();
     std::cout << "Parallel sort time: " << time1  << std::endl;
