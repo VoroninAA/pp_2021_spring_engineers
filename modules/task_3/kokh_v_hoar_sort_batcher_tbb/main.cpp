@@ -3,7 +3,7 @@
 #include "./hoar_sort_batcher.h"
 
 
-TEST(hoar_sort_batcher, simple_check_10000_4) {
+TEST(hoar_sort_batcher, simple_check_10000_44) {
     int size = 100000;
     double* mas = randomFunc(size);
     tbb_sort_main(mas, size, 4);

@@ -4,7 +4,6 @@
 #include <tbb/blocked_range.h>
 #include <tbb/task.h>
 #include <tbb/tbb.h>
-
 #include <random>
 #include <algorithm>
 #include <ctime>

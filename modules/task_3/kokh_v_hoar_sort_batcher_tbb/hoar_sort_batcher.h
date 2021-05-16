@@ -1,8 +1,8 @@
 // Copyright 2021 Kokh Vladislav
 #ifndef MODULES_TASK_3_KOKH_V_HOAR_SORT_BATCHER_TBB_HOAR_SORT_BATCHER_H_
 #define MODULES_TASK_3_KOKH_V_HOAR_SORT_BATCHER_TBB_HOAR_SORT_BATCHER_H_
-#include <tbb/task.h>
 #include <tbb/blocked_range.h>
+#include <tbb/task.h>
 
 
 int get_part(int n, int count_of_threads);
