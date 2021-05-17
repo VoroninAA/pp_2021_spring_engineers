@@ -282,9 +282,6 @@ std::vector<int> dijkstra_tbb(const std::vector<int>& graph, size_t start, size_
     int current = static_cast<int>(end);
     bool found = false;
 
-    PointInfo minPoint;
-    minPoint.distance = MAX_DISTANCE;
-    minPoint.index = -1;
     size_t pointsPerThread = points_count / THREADS_COUNT;
 
     while (current != static_cast<int>(start)) {
