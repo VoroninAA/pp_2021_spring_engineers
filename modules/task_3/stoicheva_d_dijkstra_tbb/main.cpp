@@ -37,7 +37,7 @@ TEST(Tbb, Test_Time) {
     tbb::tick_count time_start, time_end;
 
     std::vector<int> graph = create_random_graph(pointsCount, 100);
-    // print_graph(graph, pointsCount);
+    // print_graph(g raph, pointsCount);
 
     time_start = tbb::tick_count::now();
     auto distances_seq = dijkstra(graph, root, 4800);
