@@ -53,8 +53,6 @@ void SeqSort(std::vector<double>* vector) {
 
   vector->clear();
   BatcherMerge(vector, left, right);
-  //vector->clear();
-  //BatcherMerge(vector, left, right);
 }
 
 void ParSort(std::vector<double>* vector, unsigned int numThreads) {
