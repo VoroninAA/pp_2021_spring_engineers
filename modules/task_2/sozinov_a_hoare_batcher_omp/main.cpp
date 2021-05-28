@@ -31,13 +31,9 @@ TEST(Sort, correct_sort_10000) {
   std::vector<double> copy = vect;
   std::vector<double> par_vect = vect;
   std::sort(copy.begin(), copy.end());
-  double seq_start = omp_get_wtime();
   SeqSort(&vect);
-  double seq_end = omp_get_wtime();
 
-  double par_start = omp_get_wtime();
   ParSort(&par_vect, 1);
-  double par_end = omp_get_wtime();
 
   ASSERT_EQ(copy, vect);
   ASSERT_EQ(copy, par_vect);
@@ -48,13 +44,9 @@ TEST(Sort, correct_sort_900000) {
   std::vector<double> copy = vect;
   std::vector<double> par_vect = vect;
   std::sort(copy.begin(), copy.end());
-  double seq_start = omp_get_wtime();
   SeqSort(&vect);
-  double seq_end = omp_get_wtime();
 
-  double par_start = omp_get_wtime();
   ParSort(&par_vect, 4);
-  double par_end = omp_get_wtime();
 
   ASSERT_EQ(copy, vect);
   ASSERT_EQ(copy, par_vect);
@@ -65,13 +57,9 @@ TEST(Sort, correct_sort_100000) {
   std::vector<double> copy = vect;
   std::vector<double> par_vect = vect;
   std::sort(copy.begin(), copy.end());
-  double seq_start = omp_get_wtime();
   SeqSort(&vect);
-  double seq_end = omp_get_wtime();
 
-  double par_start = omp_get_wtime();
   ParSort(&par_vect, 3);
-  double par_end = omp_get_wtime();
 
   ASSERT_EQ(copy, vect);
   ASSERT_EQ(copy, par_vect);
@@ -82,13 +70,9 @@ TEST(Sort, correct_sort_3000000) {
   std::vector<double> copy = vect;
   std::vector<double> par_vect = vect;
   std::sort(copy.begin(), copy.end());
-  double seq_start = omp_get_wtime();
   SeqSort(&vect);
-  double seq_end = omp_get_wtime();
 
-  double par_start = omp_get_wtime();
   ParSort(&par_vect, 4);
-  double par_end = omp_get_wtime();
 
   ASSERT_EQ(copy, vect);
   ASSERT_EQ(copy, par_vect);
