@@ -49,7 +49,7 @@ TEST(INTEGRAL, Counts_step_negative) {
 TEST(INTEGRAL, Countstep_is_wrong) {
     std::vector<double> start = { 2 };
     std::vector<double> end = { 4 };
-    int step = 0.2;
+    int step = 2;
     ASSERT_ANY_THROW(RecIntTbb(start, end, f1, step));
 }
 
