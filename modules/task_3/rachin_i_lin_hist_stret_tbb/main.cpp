@@ -2,7 +2,6 @@
 #include <gtest/gtest.h>
 #include <vector>
 #include "./lin_hist_stret.h"
-#include <tbb/tbb.h>
 
 TEST(Parallel_Operations_TBB, Test_random_matrix_with_negative_size) {
     std::vector<int> empty;  // empty vector
@@ -60,14 +59,8 @@ TEST(Parallel_Operations_TBB, Comparison_seq_with_tbb) {
     std::vector<int> mx = getRandomMatrix(size, size);
     std::vector<int> seq;
     std::vector<int> tbb;
-    tbb::tick_count seq_start = tbb::tick_count::now();
     seq = histogramStretching(mx, size, size);
-    tbb::tick_count seq_finish = tbb::tick_count::now();
-    tbb::tick_count tbb_start = tbb::tick_count::now();
     tbb = histogramStretchingTbb(mx, size, size);
-    tbb::tick_count tbb_finish = tbb::tick_count::now();
-    std::cout << "Seq time: " << (seq_finish - seq_start).seconds() << " | " << "Tbb time: " << (tbb_finish - tbb_start).seconds();
-    std::cout << " | " << "Increase: " << (seq_finish - seq_start).seconds() / (tbb_finish - tbb_start).seconds() << std::endl;
     ASSERT_EQ(seq, tbb);
 }
 
