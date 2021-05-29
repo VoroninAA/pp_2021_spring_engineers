@@ -278,34 +278,21 @@ std::vector<int> dijkstra_tbb(const std::vector<int>& graph, size_t start, size_
 
     std::vector<int> path;
     path.push_back(static_cast<int>(end + 1));
-    int distance = distances[end];
+    int weight = distances[end];
     int current = static_cast<int>(end);
-    bool found = false;
-
-    size_t pointsPerThread = points_count / THREADS_COUNT;
 
     while (current != static_cast<int>(start)) {
-        found = false;
-
-        tbb::parallel_for(
-            tbb::blocked_range<int>(0, static_cast<int>(points_count), static_cast<int>(pointsPerThread)),
-            [&](const tbb::blocked_range<int>& range) {
-                for (int point = range.begin(); point < range.end(); point++) {
-                    if (!found && graph[current * points_count + point] > 0) {
-                        int tmp_distance = distance - graph[current * points_count + point];
-                        if (distances[point] == tmp_distance) {
-                            distance = tmp_distance;
-                            current = point;
-                            mutex.lock();
-                            path.insert(path.begin(), point + 1);
-                            mutex.unlock();
-                            found = true;
-                            // std::cout << "################ Found - now request for skip #################"
-                            // << std::endl;
-                        }
-                    }
+        for (int i = 0; i < static_cast<int>(points_count); i++) {
+            if (graph[current * points_count + i] > 0) {
+                int tmp = weight - graph[current * points_count + i];
+                if (distances[i] == tmp) {
+                    weight = tmp;
+                    current = i;
+                    path.insert(path.begin(), i + 1);
+                    break;
                 }
-            });
+            }
+        }
     }
 
     return path;
